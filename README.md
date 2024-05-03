@@ -1,2 +1,2 @@
 # KQL-Queries
-A repository containing handy KQL queries
+A repository containing handy KQL queries.
