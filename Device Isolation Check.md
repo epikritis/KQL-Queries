@@ -20,5 +20,6 @@ DeviceInfo
 | extend IsIsolated = iff((IsolationStatus == true), "Yes", "No")
 //| where IsIsolated == "Yes"
 // Get earliest device isolation event captured
-| summarize arg_min(Timestamp, DeviceId, AadDeviceId, DeviceName, OSPlatform, OSVersionInfo, IsIsolated, IsAzureADJoined = iff(true, "Yes", "No"), LoggedOnUsername)
+| summarize arg_min(Timestamp, DeviceId, AadDeviceId, DeviceName, OSPlatform, OSVersionInfo
+  , IsIsolated, IsAzureADJoined = iff(true, "Yes", "No"), LoggedOnUsername)
 ```
