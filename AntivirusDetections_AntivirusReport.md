@@ -2,6 +2,7 @@
 
 ### Description
 Query to display antivirus events captured for a device.
+
 Noteworthy: Information on actions taken by Windows Defender has been sourced from the URL: https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-defender#defender-threatseveritydefaultaction.
 
 ### Microsoft Defender XDR
