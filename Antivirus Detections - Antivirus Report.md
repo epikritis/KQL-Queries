@@ -1,11 +1,13 @@
 # Expansion of `Additional Fields` JSON Object for Antivirus Checks
 
 ### Description
+
 Query to display antivirus events captured for a device.
 
 Noteworthy: Information on actions taken by Windows Defender has been sourced from the URL: https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-defender#defender-threatseveritydefaultaction.
 
-### Microsoft Defender XDR
+### Query
+
 ```KQL
 // Additional fields in DeviceEvents for 'AntivirusDetection' and 'AntivirusReport' action types
 DeviceEvents
