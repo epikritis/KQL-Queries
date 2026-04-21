@@ -1,9 +1,11 @@
 # Mounted Disk Info from Registry
 
 ### Description
+
 Query runs through the Windows Registry to find evidence of any mounted disks. It uses the registry keys defined in the `registryKeysMountedDisks` array.
 
-### Microsoft Defender XDR
+### Query
+
 ```KQL
 let host = "paste-the-device-name-here";
 let registryKeysMountedDisks = dynamic([@"\SYSTEM\CURRENTCONTROLSET\ENUM\USBSTOR", @"\SYSTEM\MOUNTEDDEVICES"
