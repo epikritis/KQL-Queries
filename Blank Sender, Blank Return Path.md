@@ -1,13 +1,16 @@
 # No Sender, No Return Path!?
 
 ### Background
+
 Social engineers will try anything to successfully deliver bait to their targets. One technique recently observed is having missing sender and return path information in the email headers. Surprisingly, some of the emails delivered had a pass for SPF (sender policy framework) authentication.
 In Microsoft Defender, the sender is represented as `SenderFromAddress`, and the return path as `SenderMailFromAddress`. Consequently, the domain equivalents are `SenderFromDomain` and `SenderMailFromDomain` respectively.
 
 ### Detection
+
 This technique can be detected as follows. You may want to further inspect the email authentication records (SPF, DKIM, DMARC).
 
-#### Microsoft Defender XDR
+#### Query
+
 ```KQL
 let duration = 7d;
 EmailEvents
