@@ -1,8 +1,10 @@
-# Description
+# MDAV Cancelled Scans
+
+### Description
 
 KQL query to detect cancelled MDAV scans.
 
-# Query
+### Query
 
 ```KQL
 DeviceEvents
@@ -17,3 +19,7 @@ DeviceEvents
     , ErrorDescription = tostring(parse_json(AdditionalFields).ErrorDescription)
 | summarize count() by ScanTypeIndex
 ```
+
+### References
+
+- https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus
