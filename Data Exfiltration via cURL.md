@@ -6,8 +6,8 @@ Detecting exfiltration of data via cURL. To be used with caution as it is prone 
 
 ### MITRE ATT&CK Mapping
 
-- T1048.001[https://attack.mitre.org/techniques/T1048/001]
-- T1048.003[https://attack.mitre.org/techniques/T1048/003]
+- [T1048.001](https://attack.mitre.org/techniques/T1048/001)
+- [T1048.003](https://attack.mitre.org/techniques/T1048/003)
 
 ### Query
 
