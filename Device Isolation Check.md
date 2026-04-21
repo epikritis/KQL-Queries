@@ -3,7 +3,7 @@
 ### Description
 Query to check if device has been isolated in the past 24h. If isolated, the 'IsIsolated' field has the value 'Yes', otherwise the value is 'No'.
 
-### Microsoft Defender XDR
+### Query
 ```KQL
 let host = "paste-the-device-name-here";
 DeviceInfo
