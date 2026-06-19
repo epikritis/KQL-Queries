@@ -16,7 +16,8 @@ let duration = 7d;
 EmailEvents
 | where Timestamp >= ago(duration)
 | where EmailDirection == "Inbound"
-| where isempty(tostring(SenderFromDomain)) and tostring(SenderMailFromDomain) == "<>"
+| where tostring(SenderFromDomain) == ""
+    and tostring(SenderMailFromDomain) == "<>"
 | extend dkim = tostring(parse_json(AuthenticationDetails).DKIM)
 | extend dmarc = tostring(parse_json(AuthenticationDetails).DMARC)
 | extend spf = tostring(parse_json(AuthenticationDetails).SPF)
