@@ -10,7 +10,9 @@ This query checks all tables containing URL attributes for execution of maliciou
 let url_list = pack_array(
     "list_of_domains here"
 );
-union isfuzzy=true withsource=SourceTable DeviceEvents, DeviceNetworkEvents, DeviceFileEvents, DeviceProcessEvents, UrlClickEvents, EmailUrlInfo, MessageUrlInfo
+union isfuzzy=true withsource=SourceTable DeviceEvents,
+    DeviceNetworkEvents, DeviceFileEvents, DeviceProcessEvents,
+    UrlClickEvents, EmailUrlInfo, MessageUrlInfo
 | where Timestamp >= ago(30d)
 | where RemoteUrl has_any (url_list) or 
         ProcessCommandLine  has_any (url_list) or 
