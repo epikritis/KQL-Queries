@@ -16,16 +16,19 @@ let duration = 7d;
 EmailEvents
 | where Timestamp >= ago(duration)
 | where EmailDirection == "Inbound"
-| where tostring(SenderFromDomain) == ""
+    and tostring(SenderFromDomain) == ""
     and tostring(SenderMailFromDomain) == "<>"
-| extend dkim = tostring(parse_json(AuthenticationDetails).DKIM)
-| extend dmarc = tostring(parse_json(AuthenticationDetails).DMARC)
-| extend spf = tostring(parse_json(AuthenticationDetails).SPF)
-| extend DKIM_Record = iff(isempty(dkim), "empty", dkim)
-| extend DMARC_Record = iff(isempty(dmarc), "empty", dmarc)
-| extend SPF_Record = iff(isempty(spf), "empty", spf)
-| project-reorder SenderMailFromAddress, SenderFromAddress, SenderMailFromDomain, SenderFromDomain
-    , SenderIPv4, SPF_Record, DKIM_Record, DMARC_Record, RecipientEmailAddress, LatestDeliveryLocation, LatestDeliveryAction
+| extend ad = parse_json(AuthenticationDetails)
+| extend dkim = tostring(ad.DKIM),
+         dmarc = tostring(ad.DMARC),
+         spf = tostring(ad.SPF)
+| extend DKIM_Record = iff(isempty(dkim), "empty", dkim),
+         DMARC_Record = iff(isempty(dmarc), "empty", dmarc),
+         SPF_Record = iff(isempty(spf), "empty", spf)
+| project-reorder SenderMailFromAddress, SenderFromAddress, SenderMailFromDomain,
+                  SenderFromDomain, SenderIPv4, SPF_Record, DKIM_Record,
+                  DMARC_Record, RecipientEmailAddress, LatestDeliveryLocation,
+                  LatestDeliveryAction
 | sort by Timestamp desc
 ```
 
