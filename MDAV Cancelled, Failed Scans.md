@@ -13,12 +13,12 @@ DeviceEvents
          // ScanParametersIndex: 1 (Quick), 2 (Full)
          ScanParametersIndex = toint(parse_json(AdditionalFields).ScanParametersIndex),
          ScanTypeIndex = tostring(parse_json(AdditionalFields).ScanTypeIndex),
-         ErrorCode = tostring(parse_json(AdditionalFields).ErrorCode),
-         ErrorDescription = tostring(parse_json(AdditionalFields).ErrorDescription),
+         errCode = tostring(parse_json(AdditionalFields).ErrorCode),
+         errDesc = tostring(parse_json(AdditionalFields).ErrorDescription),
          User = tostring(parse_json(AdditionalFields).User),
          AV_ScanResult = iff(ActionType == "AntivirusScanCancelled", "Cancelled", "Failed")
 | extend ErrorCode = iff(isempty(errCode), "Not available", ErrorCode),
-         ErrorDescription = iff(isempty(errorDesc), "Not available", ErrorDescription),
+         ErrorDescription = iff(isempty(errDesc), "Not available", ErrorDescription)
 | summarize arg_max(Timestamp, *) by DeviceName
 | project Timestamp, DeviceName, User, AV_ScanResult, ScanId, ScanParametersIndex,
           ScanTypeIndex, ErrorCode, ErrorDescription, DeviceId, ReportId
